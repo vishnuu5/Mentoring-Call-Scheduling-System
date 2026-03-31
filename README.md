@@ -18,7 +18,7 @@ https://github.com/vishnuu5/Mentoring-Call-Scheduling-System.git
 ```
 
 ## Deployed on vercel
-[View project]()
+[View project](https://mentoring-call-scheduling-system.vercel.app)
 
 ## Setup & Installation
 
