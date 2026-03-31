@@ -1,0 +1,24 @@
+export const errorHandler = (err, req, res, next) => {
+  console.error('Error:', err.message);
+
+  if (err.code === '23505') {
+    return res.status(409).json({ error: 'Duplicate entry' });
+  }
+  if (err.status === 400) {
+    return res.status(400).json({ error: err.message });
+  }
+  if (err.name === 'JsonWebTokenError') {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+
+  if (err.name === 'TokenExpiredError') {
+    return res.status(401).json({ error: 'Token expired' });
+  }
+  return res.status(err.status || 500).json({
+    error: err.message || 'Internal server error'
+  });
+};
+
+export const notFound = (req, res) => {
+  res.status(404).json({ error: 'Route not found' });
+};
